@@ -1,0 +1,115 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="container is-desktop">
+  <div class="content">
+  {% comment %} <div class="content" style="max-width: 1150px;"> {% endcomment %}
+
+
+    <h1>{{post.title}}</h1>
+    <p>{{post.pub_date|date:'d.m.y H:i'}}</p>
+    {% if post.category %}
+      <a href="{% url 'blog:by_category' post.category.slug %}">{{post.category}}</a>
+    {% endif %} 
+    <p>{{post.text|linebreaksbr}}</p>
+  </div>
+
+    <!-- Тут пробую с переопределением атрибутов в CommentForm. Если не получится, нужно не забыть там все вернуть на место-->
+
+    <form method="post" class="post-form" style="max-width: 800px;">
+      {% csrf_token %}
+
+      {{ form.as_p }}
+    <div class="block">
+    </div class="block">
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+
+    <!-- Так криво отражает
+    <form method="post" class="post-form">
+      {% csrf_token %}
+    <div class="field">
+      <label class="label">Имя</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="Text input" {{form.name}}>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control has-icons-left has-icons-right">
+        <input class="input is-danger" type="email" placeholder="Email input" value="hello@" {{form.email}}>
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+        <span class="icon is-small is-right">
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+      </div>
+      <p class="help is-danger">This email is invalid</p>
+    </div>
+
+    <div class="field">
+      <label class="label">Комментарий</label>
+      <div class="control">
+        <textarea class="textarea" placeholder="Textarea" {{form.text}} ></textarea>
+      </div>
+    </div>
+    <div class="field is-grouped">
+      <p class="control">
+        <button class="button is-primary">Submit</button>
+      </p>
+    </div>
+    -->
+
+
+    <!-- так работает, но выглядит убого
+    <form method="post" class="mb-6">
+      {% csrf_token %}
+      <div class="field">
+        <label class="label">Имя</label>
+        <p class="control">{{form.name}}</p>
+      </div>
+      <div class="field">
+        <div class="field-label is-normal">
+        <label class="label">Email</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            {{form.email}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Комментарий</label>
+      <p class="control">
+        {{form.text}}
+      </p>
+    </div>
+    <div class="field is-grouped">
+      <p class="control">
+        <button class="button is-primary">Submit</button>
+      </p>
+    </div>
+    -->
+
+
+    <p class="subtitle"> Ниже комментарии:</p>
+
+
+    {% for comment in comments %}
+    <article class="message" style="max-width: 800px;">
+      <div class="message-body">
+        <p><strong>{{comment.name}}</strong></p>
+        <p class="is-size-7"> {{comment.pub_date|date:'d.m.y H:i'}}</p>
+        <p>{{comment.text}}</p>
+      </div>
+    </article>
+    {% endfor %}
+</div>
+{% endblock %} 

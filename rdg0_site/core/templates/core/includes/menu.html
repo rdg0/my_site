@@ -1,0 +1,12 @@
+{% for key, val in categories.items %}
+  <ul  class="nav nav-pills">  
+  <li class="nav-item">{{ key.name }}
+  {% for subcat in val %}
+    <ul  class="nav nav-pills">
+      <li class="nav-item"><a class="nav-link" href="{% url 'app:by_category' subcat.slug %}"> {{ subcat }} </a> </li>
+    </ul>
+  {% endfor %}
+  </li>
+</ul>
+{% endfor %}
+{% comment %}  {% endcomment %}

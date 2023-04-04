@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+{% block content %}
+
+<div class="content">
+  <p class="subtitle is-5"> Все записи </p>
+  {% for post in posts %}
+    <div class="notification" style="max-width: 1150px;" >
+      <a href="{% url 'blog:post_detail' post.pk %} "><strong>{{post.title}}</strong></a>
+      <p class="is-size-7"> {{post.pub_date|date:'d.m.y H:i'}}</p>
+      {% if post.category %}
+        <a href="{% url 'blog:by_category' post.category.slug %}">{{posts.0.category}} </a>
+      {% endif %} 
+      <p>{{posts.0.get_preview}}...</p>
+    </div>  
+  {% endfor %}
+</div>
+{% endblock %} 
