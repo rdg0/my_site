@@ -15,20 +15,35 @@
 
     <!-- Тут пробую с переопределением атрибутов в CommentForm. Если не получится, нужно не забыть там все вернуть на место-->
 
-    <form method="post" class="post-form" style="max-width: 800px;">
-      {% csrf_token %}
+  <form method="post" class="post-form" style="max-width: 800px;">
+    {% csrf_token %}
 
-      {{ form.as_p }}
-    <div class="block">
-    </div class="block">
-    <div class="field is-grouped">
-      <div class="control">
-        <button class="button is-primary">Submit</button>
-      </div>
+    {{ form.as_p }}
+  <div class="block">
+  </div class="block">
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-primary">Submit</button>
     </div>
   </div>
+  <p class="subtitle">Комментарии:</p>
 
-    <!-- Так криво отражает
+
+  {% for comment in comments %}
+  <article class="message" style="max-width: 800px;">
+    <div class="message-body">
+      <p><strong>{{comment.name}}</strong></p>
+      <p class="is-size-7"> {{comment.pub_date|date:'d.m.y H:i'}}</p>
+      <p>{{comment.text}}</p>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %} 
+
+
+    <!-- Попытки прикрутить стиль бульма к формам.
+      Так криво отражает:
     <form method="post" class="post-form">
       {% csrf_token %}
     <div class="field">
@@ -97,19 +112,3 @@
       </p>
     </div>
     -->
-
-
-    <p class="subtitle"> Ниже комментарии:</p>
-
-
-    {% for comment in comments %}
-    <article class="message" style="max-width: 800px;">
-      <div class="message-body">
-        <p><strong>{{comment.name}}</strong></p>
-        <p class="is-size-7"> {{comment.pub_date|date:'d.m.y H:i'}}</p>
-        <p>{{comment.text}}</p>
-      </div>
-    </article>
-    {% endfor %}
-</div>
-{% endblock %} 

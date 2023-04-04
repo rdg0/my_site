@@ -19,48 +19,4 @@
       </div>  
     {% endfor %}
   </div>
-{% comment %} 
-  <div class="content">
-    <p class="subtitle is-5"> Последние записи в блоге </p>
-      <div class="notification is-link is-light" style="max-width: 1200px;" >
-          <a href="{% url 'blog:post_detail' posts.0.pk %} "><strong>{{posts.0.title}}</strong></a>
-        <p class="is-size-7"> {{posts.1.pub_date|date:'d.m.y H:i'}}</p> <!-- обрати внимание, как контролируем размер внутри абзаца - class="is-size"-->
-        {% if posts.0.category %}
-          <a href="{% url 'blog:by_category' posts.0.category.slug %}">{{posts.0.category}} </a>
-        {% endif %} 
-        <p>{{posts.0.get_preview}}...</p>
-      </div> 
-      <div class="box" style="max-width: 1200px;">
-        <h5>
-          <a href="{% url 'blog:post_detail' posts.1.pk %} ">{{posts.1.title}}</a>
-        </h5>
-        <p class="is-size-6"> {{posts.1.pub_date|date:'d.m.y H:i'}}</p> <!-- обрати внимание, как контролируем размер внутри абзаца - class="is-size"-->
-        {% if posts.1.category %}
-          <a href="{% url 'blog:by_category' posts.1.category.slug %}">{{posts.1.category}} </a>
-        {% endif %} 
-        <p>{{posts.1.get_preview}}...</p>
-      </div>  
-      <div class="box" style="max-width: 1200px;">
-        <h5>
-          <a href="{% url 'blog:post_detail' posts.2.pk %} ">{{posts.2.title}}</a>
-        </h5>
-        <p class="is-size-6"> {{posts.2.pub_date|date:'d.m.y H:i'}}</p> <!-- обрати внимание, как контролируем размер внутри абзаца - class="is-size"-->
-        {% if posts.2.category %}
-          <a href="{% url 'blog:by_category' posts.2.category.slug %}">{{posts.2.category}} </a>
-        {% endif %} 
-        <p>{{posts.2.get_preview}}...</p>
-      </div> 
-      <div class="box" style="max-width: 1200px;">
-        <h5>
-          <a href="{% url 'blog:post_detail' posts.3.pk %} ">{{posts.3.title}}</a>
-        </h5>
-        <p class="is-size-6"> {{posts.3.pub_date|date:'d.m.y H:i'}}</p> <!-- обрати внимание, как контролируем размер внутри абзаца - class="is-size"-->
-        {% if posts.3.category %}
-          <a href="{% url 'blog:by_category' posts.3.category.slug %}">{{posts.3.category}} </a>
-        {% endif %} 
-        <p>{{posts.3.get_preview}}...</p>
-      </div> 
-    </div> 
-  </div> {% endcomment %}
-
 {% endblock %}
