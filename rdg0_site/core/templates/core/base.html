@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% load static %}
 <html>
   <head>
     <meta charset="utf-8">
@@ -10,7 +9,7 @@
   <body class="theme-page">
     <section class="container" style="max-width: 960px">
       <header>
-        <nav class="navbar container is-fixed-top navbar is-white has-text-centered"style="max-width: 960px"> <!-- style="max-width: 960px"-->
+        <nav class="navbar container navbar is-white has-text-centered"style="max-width: 960px"> <!-- style="max-width: 960px"-->
           <div id="navbarMenuHero8" class="navbar-end has-text-centered">
             <a class="navbar-item 
               {% if request.resolver_match.view_name  == 'core:index' %}
@@ -37,20 +36,21 @@
         </nav>
       
             <!-- Hero content: will be in the middle -->
-          <div class="hero is-white">
-            <div class="hero-body">
-              <div class="container has-text-centered" style="max-width: 1150px;">
-                <h1 class="title">
-                  Просто мой блог.
-                </h1>
-                <h2 class="subtitle">
-                  Личный сайт очередного ноунейма.
-                </h2>
-              </div>
-            </div>
-          </div>
+        {% comment %} <div class="hero is-white"> {% endcomment %}
+          {% comment %} <div class="hero-body"> {% endcomment %}
+
+          {% comment %} </div> {% endcomment %}
+        {% comment %} </div> {% endcomment %}
       </header>
       <main> 
+        <div class="container hero is-white has-text-centered" style="max-width: 960px">
+          <h1 class="title">
+            Просто мой блог.
+          </h1>
+          <h2 class="subtitle">
+            Личный сайт очередного ноунейма.
+          </h2>
+        </div>
         {% block content %} 
             Контент не подвезли
         {%endblock%}
