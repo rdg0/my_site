@@ -74,7 +74,7 @@
 
   </div>
   <div class="content">
-    <p class="subtitle is-5"> Последние записи в блоге </p>
+    <p class="subtitle is-5"> Последние записи в блоге: </p>
     {% for post in posts %}
       <div class="notification" style="max-width: 1150px;" >
         <a href="{% url 'blog:post_detail' post.pk %} "><strong>{{post.title}}</strong></a>
