@@ -70,9 +70,9 @@ class Comment(models.Model):
         related_name='comments',
         on_delete=models.CASCADE
     )
-    name = models.CharField(max_length=255)
-    email = models.EmailField()
-    text = models.TextField()
+    name = models.CharField('Имя', max_length=255)
+    email = models.EmailField('Почта')
+    text = models.TextField('Комментарий')
     pub_date = models.DateTimeField(
         'Дата комментария',
         auto_now_add=True

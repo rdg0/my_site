@@ -19,7 +19,7 @@
 
     <!-- Тут пробую с переопределением атрибутов в CommentForm. Если не получится, нужно не забыть там все вернуть на место-->
 
-  <form method="post" class="post-form" style="max-width: 800px;">
+  <form method="post" class="post-form" style="max-width: 700px;">
     {% csrf_token %}
 
     {{ form.as_p }}
@@ -30,11 +30,14 @@
       <button class="button is-primary">Submit</button>
     </div>
   </div>
-  <p class="subtitle">Комментарии:</p>
-
+  {% if comments %}
+    <p class="subtitle">Комментарии:</p>
+  {% else %}
+    <p class="subtitle">Тут пока нет комментариев</p>
+  {% endif %} 
 
   {% for comment in comments %}
-  <article class="message" style="max-width: 800px;">
+  <article class="message" style="max-width: 700px;">
     <div class="message-body">
       <p><strong>{{comment.name}}</strong></p>
       <p class="is-size-7"> {{comment.pub_date|date:'d.m.y H:i'}}</p>
@@ -45,74 +48,3 @@
 </div>
 {% endblock %} 
 
-
-    <!-- Попытки прикрутить стиль бульма к формам.
-      Так криво отражает:
-    <form method="post" class="post-form">
-      {% csrf_token %}
-    <div class="field">
-      <label class="label">Имя</label>
-      <div class="control">
-        <input class="input" type="text" placeholder="Text input" {{form.name}}>
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="label">Email</label>
-      <div class="control has-icons-left has-icons-right">
-        <input class="input is-danger" type="email" placeholder="Email input" value="hello@" {{form.email}}>
-        <span class="icon is-small is-left">
-          <i class="fas fa-envelope"></i>
-        </span>
-        <span class="icon is-small is-right">
-          <i class="fas fa-exclamation-triangle"></i>
-        </span>
-      </div>
-      <p class="help is-danger">This email is invalid</p>
-    </div>
-
-    <div class="field">
-      <label class="label">Комментарий</label>
-      <div class="control">
-        <textarea class="textarea" placeholder="Textarea" {{form.text}} ></textarea>
-      </div>
-    </div>
-    <div class="field is-grouped">
-      <p class="control">
-        <button class="button is-primary">Submit</button>
-      </p>
-    </div>
-    -->
-
-
-    <!-- так работает, но выглядит убого
-    <form method="post" class="mb-6">
-      {% csrf_token %}
-      <div class="field">
-        <label class="label">Имя</label>
-        <p class="control">{{form.name}}</p>
-      </div>
-      <div class="field">
-        <div class="field-label is-normal">
-        <label class="label">Email</label>
-      </div>
-      <div class="field-body">
-        <div class="field">
-          <p class="control">
-            {{form.email}}
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Комментарий</label>
-      <p class="control">
-        {{form.text}}
-      </p>
-    </div>
-    <div class="field is-grouped">
-      <p class="control">
-        <button class="button is-primary">Submit</button>
-      </p>
-    </div>
-    -->
