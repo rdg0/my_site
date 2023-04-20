@@ -56,13 +56,11 @@ python3 manage.py migrate
 Подготовить статику:  
 ```
 python3 manage.py collectstatic
-
 ```
 
 Создать суперюзера:  
 ```
 python3 manage.py createsuperuser
-
 ```
 
 В rdg0_site/settings.py создать .env файл c добавив DJANGO_SECRET_KEY=... для последующего импорта в settings.py.  
