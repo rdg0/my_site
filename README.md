@@ -16,6 +16,8 @@ Python 3.8
 Django 4.2  
 Aiogram 2  
 SQLite  
+Python-dotenv  
+Bulma  
 
 ####  Запуск
 
@@ -39,7 +41,7 @@ python3 -m pip install --upgrade pip
 pip install -r requirements.txt  
 ```
 
-Gерейти в директорию с manage.py:  
+Перейти в директорию с manage.py:  
 
 ```
 cd rdg0_site
